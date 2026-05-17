@@ -1,0 +1,664 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RSVP | Wedding Website</title>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", sans-serif;
+      background-color: #efefef;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    /* ===== 導覽列 ===== */
+    .nav {
+      position: fixed;
+      top: 30px;
+      right: 40px;
+      display: flex;
+      gap: 24px;
+      padding: 8px 0;
+      border-top: 1px solid #333;
+      border-bottom: 1px solid #333;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .nav a:hover {
+      opacity: 0.6;
+    }
+     body {
+    margin: 0;
+    background-color: #efefef;
+  }
+  h1 img {
+    width: auto;
+    height: 70px;
+    display: block;
+    margin-left: 20px;
+    margin-top: -20px;
+  }
+
+ .mini-game-section {
+  width: 100%;
+  margin: 80px auto;
+  text-align: center;
+}
+
+.game-stage {
+  position: relative;
+  width: 900px;
+  height: 500px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 20px;
+
+  background-image: url("images/game/beach_bg.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.game-dialog {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+
+  background: rgba(255, 255, 255, 0.85);
+  padding: 12px 28px;
+  border-radius: 30px;
+  color: #6b5144;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.game-character {
+  position: absolute;
+  bottom: 70px;
+  width: 120px;
+  z-index: 5;
+  transition: left 3s ease, right 3s ease, opacity 0.5s ease;
+}
+
+.bride {
+  left: -140px;
+}
+
+.groom {
+  right: -140px;
+}
+
+.bride.walk-in {
+  left: 310px;
+}
+
+.groom.walk-in {
+  right: 310px;
+}
+
+.scene-img {
+  position: absolute;
+  left: 50%;
+  bottom: 55px;
+  width: 420px;
+  transform: translateX(-50%) scale(0.9);
+  opacity: 0;
+  z-index: 6;
+  transition: 0.7s ease;
+}
+
+.scene-img.show {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+.start-game-btn,
+.cheers-btn,
+.rsvp-popup-btn {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+
+  padding: 12px 34px;
+  border-radius: 30px;
+  border: 1px solid #333;
+  background: white;
+  color: #333;
+  text-decoration: none;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  z-index: 20;
+}
+
+.start-game-btn:hover,
+.cheers-btn:hover,
+.rsvp-popup-btn:hover {
+  background: #333;
+  color: #fff;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+.start-game-btn.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cheers-btn {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cheers-btn.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.rsvp-popup-btn {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rsvp-popup-btn.show {
+  opacity: 1;
+  pointer-events: auto;
+  animation: buttonPop 0.6s ease forwards;
+}
+
+@keyframes buttonPop {
+  0% {
+    transform: translateX(-50%) scale(0.7);
+  }
+
+  70% {
+    transform: translateX(-50%) scale(1.08);
+  }
+
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+ 
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px 40px;
+  border-top: 1px solid #ccc;
+  margin-top: 80px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* ⭐ 讓三塊平均分 */
+.footer-info {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex: 3;   /* 左邊佔 3 份 */
+}
+
+.footer-info div {
+  flex: 1;   /* 日期 / 地點 平均 */
+  line-height: 1.6;
+}
+
+/* ⭐ 中間 */
+.copyright {
+  flex: 1;
+  text-align: center;
+  font-style: italic;
+  color: #888;
+}
+
+/* ⭐ 右邊 */
+.music-player {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.music-player audio {
+  height: 30px;
+}
+/* =========================================
+   Mini Game RWD
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* ===== 超大螢幕 ===== */
+@media (min-width: 1600px) {
+
+  .game-stage {
+    width: 1100px;
+    height: 620px;
+  }
+
+  .game-character {
+    width: 150px;
+  }
+
+  .scene-img {
+    width: 520px;
+  }
+
+  .bride.walk-in {
+    left: 390px;
+  }
+
+  .groom.walk-in {
+    right: 390px;
+  }
+}
+
+/* ===== 平板 / 小筆電 ===== */
+@media (max-width: 1024px) {
+
+  .nav {
+    position: static;
+    width: 88%;
+    margin: 16px auto 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .nav a {
+    font-size: 13px;
+  }
+
+  h1 img {
+    height: 58px;
+    margin: 0 auto 10px;
+  }
+
+  .mini-game-section {
+    margin: 60px auto;
+  }
+
+  .game-stage {
+    width: 92%;
+    height: 460px;
+  }
+
+  .game-dialog {
+    font-size: 14px;
+    padding: 10px 22px;
+  }
+
+  .game-character {
+    width: 100px;
+    bottom: 60px;
+  }
+
+  .scene-img {
+    width: 360px;
+  }
+
+  .bride.walk-in {
+    left: 32%;
+  }
+
+  .groom.walk-in {
+    right: 32%;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 18px;
+    text-align: center;
+  }
+
+  .footer-info {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .music-player {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+/* ===== 手機版 ===== */
+@media (max-width: 768px) {
+
+  .nav {
+    position: static;
+    width: 92%;
+    margin: 14px auto 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 6px 0;
+  }
+
+  .nav a {
+    font-size: 12px;
+  }
+
+  .mini-game-section {
+    margin: 40px auto;
+  }
+
+  .game-stage {
+    width: 94%;
+    height: 540px;
+    border-radius: 16px;
+  }
+
+  .game-dialog {
+    width: 82%;
+    top: 18px;
+    font-size: 13px;
+    line-height: 1.6;
+    padding: 10px 18px;
+  }
+
+  .game-character {
+    width: 80px;
+    bottom: 90px;
+  }
+
+  .bride {
+    left: -100px;
+  }
+
+  .groom {
+    right: -100px;
+  }
+
+  .bride.walk-in {
+    left: 29%;
+  }
+
+  .groom.walk-in {
+    right: 29%;
+  }
+
+  .scene-img {
+    width: 78%;
+    bottom: 110px;
+  }
+
+  .start-game-btn,
+  .cheers-btn,
+  .rsvp-popup-btn {
+    width: 76%;
+    font-size: 13px;
+    padding: 12px 0;
+    bottom: 26px;
+  }
+
+  .footer {
+    flex-direction: column;
+    padding: 24px 18px;
+    margin-top: 50px;
+    text-align: center;
+    gap: 18px;
+  }
+
+  .footer-info {
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+  }
+
+  .footer-info div {
+    width: 100%;
+  }
+
+  .music-player {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .music-player audio {
+    width: 90%;
+  }
+}
+
+/* ===== 小手機 ===== */
+@media (max-width: 430px) {
+
+  .game-stage {
+    height: 500px;
+  }
+
+  .game-character {
+    width: 72px;
+  }
+
+  .scene-img {
+    width: 82%;
+  }
+
+  .game-dialog {
+    font-size: 12px;
+  }
+
+  .start-game-btn,
+  .cheers-btn,
+  .rsvp-popup-btn {
+    font-size: 12px;
+  }
+
+  .bride.walk-in {
+    left: 25%;
+  }
+
+  .groom.walk-in {
+    right: 25%;
+  }
+}
+
+/* ===== iPhone SE / 超小手機 ===== */
+@media (max-width: 375px) {
+
+  .game-stage {
+    height: 470px;
+  }
+
+  .scene-img {
+    width: 84%;
+  }
+
+  .game-character {
+    width: 66px;
+  }
+
+  .game-dialog {
+    width: 86%;
+    font-size: 11px;
+  }
+}
+  </style>
+
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="rsvp.html">RSVP</a>
+    <a href="event.html">Event Detail</a>
+  </nav>
+<section class="mini-game-section">
+
+  <div class="game-stage">
+
+    <div class="game-dialog" id="gameDialog">
+      Click Start to begin our little story ✨
+    </div>
+
+    <!-- 走路角色 -->
+    <img src="images/game/bride_01.png" class="game-character bride" id="bride">
+    <img src="images/game/groom_01.png" class="game-character groom" id="groom">
+
+    <!-- 劇情圖 -->
+    <img src="images/game/coasting_01.png" class="scene-img" id="sceneImg">
+
+    <button class="start-game-btn" id="startGameBtn">
+      Start
+    </button>
+
+    <button class="cheers-btn" id="cheersBtn">
+      Click to Cheers 🍷
+    </button>
+
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe2QzLDO49ixd9VaWWpDKXa8qOQhWUKKhdVQpNEb2jcXDGEYw/viewform?usp=publish-editor" target="_blank" class="rsvp-popup-btn" id="rsvpBtn">
+      RSVP Now
+    </a>
+
+  </div>
+
+</section>
+</div>
+<div class="footer">
+  
+  <div class="footer-info">
+    <div>
+      <strong>日期：</strong>2026.10.03（星期六）<br>
+      <strong>時間：</strong>晚宴準時入席 18:00
+    </div>
+
+    <div>
+      <strong>地點：</strong>台北青青食尚花園會館–星空之森<br>
+      （臺北市士林區至善路二段266巷32號）
+    </div>
+
+    <div class="copyright">
+      © 2026 by Neil & Carol
+    </div>
+  </div>
+
+  <div class="music-player">
+    <audio controls>
+      <source src="music/song.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+</div>
+<script>
+  const startBtn = document.getElementById("startGameBtn");
+  const cheersBtn = document.getElementById("cheersBtn");
+  const rsvpBtn = document.getElementById("rsvpBtn");
+
+  const bride = document.getElementById("bride");
+  const groom = document.getElementById("groom");
+  const sceneImg = document.getElementById("sceneImg");
+  const dialog = document.getElementById("gameDialog");
+
+  const brideFrames = [
+    "images/game/bride_01.png",
+    "images/game/bride_02.png",
+    "images/game/bride_03.png",
+    "images/game/bride_04.png",
+    "images/game/bride_05.png",
+    "images/game/bride_06.png",
+    "images/game/bride_07.png",
+    "images/game/bride_08.png"
+  ];
+
+  const groomFrames = [
+    "images/game/groom_01.png",
+    "images/game/groom_02.png",
+    "images/game/groom_03.png",
+    "images/game/groom_04.png",
+    "images/game/groom_05.png",
+    "images/game/groom_06.png",
+    "images/game/groom_07.png",
+    "images/game/groom_08.png"
+  ];
+
+  let frameIndex = 0;
+  let walkInterval;
+
+  function startWalkingAnimation() {
+    walkInterval = setInterval(function () {
+      frameIndex = (frameIndex + 1) % 8;
+      bride.src = brideFrames[frameIndex];
+      groom.src = groomFrames[frameIndex];
+    }, 160);
+  }
+
+  function stopWalkingAnimation() {
+    clearInterval(walkInterval);
+  }
+
+  startBtn.addEventListener("click", function () {
+    startBtn.classList.add("hide");
+    dialog.innerText = "They are walking toward each other...";
+
+    startWalkingAnimation();
+
+    bride.classList.add("walk-in");
+    groom.classList.add("walk-in");
+
+    setTimeout(function () {
+      stopWalkingAnimation();
+
+      bride.style.opacity = "0";
+      groom.style.opacity = "0";
+
+      sceneImg.src = "images/game/coasting_01.png";
+      sceneImg.classList.add("show");
+      dialog.innerText = "They finally meet by the sea.";
+    }, 3100);
+
+    setTimeout(function () {
+      sceneImg.src = "images/game/coasting_02.png";
+      dialog.innerText = "A little closer, a little happier.";
+    }, 4300);
+
+    setTimeout(function () {
+      cheersBtn.classList.add("show");
+      dialog.innerText = "Click to cheers!";
+    }, 5200);
+  });
+
+  cheersBtn.addEventListener("click", function () {
+    cheersBtn.classList.remove("show");
+
+    sceneImg.src = "images/game/coasting_toasting.png";
+    dialog.innerText = "Cheers to love!";
+
+    setTimeout(function () {
+      sceneImg.src = "images/game/coasting_happy.png";
+      dialog.innerText = "Will you join our celebration?";
+    }, 1200);
+
+    setTimeout(function () {
+      rsvpBtn.classList.add("show");
+    }, 2000);
+  });
+</script>
+</body>

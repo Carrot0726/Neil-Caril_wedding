@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Website</title>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", sans-serif;
+      background-color: #efefef;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* ===== 導覽列 ===== */
+    .nav {
+      position: fixed;
+      top: 30px;
+      right: 40px;
+      display: flex;
+      gap: 24px;
+      padding: 8px 0;
+      border-top: 1px solid #333;
+      border-bottom: 1px solid #333;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .nav a:hover {
+      opacity: 0.6;
+    }
+     body {
+    margin: 0;
+    background-color: #efefef;
+  }
+
+  h1 img {
+    width: 200px;
+    height: auto;
+    display: block;
+    margin-left: 20px;
+    margin-top: -20px;
+  }
+  .subtitle-img {
+  width: 100%;
+  height: auto;
+}
+.home-hero {
+  position: relative;
+  width: 90%;
+  margin: 40px auto 0;
+}
+
+.main-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.typing-text {
+  position: absolute;
+  top: 18%;
+  right: 10.355%;
+  width: 43%;
+  font-family: "Noto Serif TC", serif;
+  font-size: 20px;
+  line-height: 2.2;
+  letter-spacing: 6px;
+  color: #333;
+  text-align: center;
+  text-shadow: 
+  0 0 6px rgba(0, 0, 0, 0.1),
+  0 0 12px rgba(0, 0, 0, 0.08);
+}
+.typing-text {
+  animation: glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 
+      0 0 4px rgba(0, 0, 0, 0.08),
+      0 0 8px rgba(0, 0, 0, 0.05);
+  }
+
+  to {
+    text-shadow: 
+      0 0 10px rgba(0, 0, 0, 0.15),
+      0 0 18px rgba(0, 0, 0, 0.1);
+  }
+}
+.typing-text p {
+  margin: 0;
+  white-space: nowrap;
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+
+  animation: typing 3s steps(30, end) forwards;
+}
+
+.typing-text p:nth-child(1) { animation-delay: 0s; }
+.typing-text p:nth-child(2) { animation-delay: 2.5s; }
+.typing-text p:nth-child(3) { animation-delay: 4.2s; }
+.typing-text p:nth-child(4) { animation-delay: 5.7s; }
+.typing-text p:nth-child(5) { animation-delay: 7.6s; }
+.typing-text p:nth-child(6) { animation-delay: 9.4s; }
+.typing-text p:nth-child(7) { animation-delay: 11.3s; }
+.typing-text p:nth-child(8) { animation-delay: 13.2s; }
+
+@keyframes typing {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 1;
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+.button-section {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+.button-section a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* ⭐ 圖片本體（透明PNG） */
+.button-section img {
+  width: 170px;
+  height: auto;
+  display: block;
+
+  /* ❗ 關鍵：不要用 box-shadow */
+  /* 改用 drop-shadow 才不會變方形 */
+  filter: drop-shadow(0 8px 10px rgba(0,0,0,0.18));
+
+  transition: all 0.2s ease;
+}
+
+/* ✨ 滑過：浮起 */
+.button-section img:hover {
+  transform: translateY(-6px);
+  filter: drop-shadow(0 12px 16px rgba(0,0,0,0.25));
+}
+
+/* 🔥 按下：壓下 */
+.button-section a:active img {
+  transform: translateY(2px) scale(0.97);
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px 40px;
+  border-top: 1px solid #ccc;
+  margin-top: 80px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* ⭐ 讓三塊平均分 */
+.footer-info {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex: 3;   /* 左邊佔 3 份 */
+}
+
+.footer-info div {
+  flex: 1;   /* 日期 / 地點 平均 */
+  line-height: 1.6;
+}
+
+/* ⭐ 中間 */
+.copyright {
+  flex: 1;
+  text-align: center;
+  font-style: italic;
+  color: #888;
+}
+
+/* ⭐ 右邊 */
+.music-player {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.music-player audio {
+  height: 30px;
+}
+/* ===== 平板 / 小螢幕 RWD：769px–1024px ===== */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .nav {
+    position: static;
+    width: 86%;
+    margin: 16px auto 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .nav a {
+    font-size: 13px;
+  }
+
+  h1 img {
+    width: 170px;
+    margin: 24px auto 20px;
+  }
+
+  .container {
+    width: 88vw;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+  }
+
+  .subtitle-img {
+    width: 100%;
+    display: block;
+  }
+
+  .typing-text {
+    position: absolute;
+    top: 28%;
+    right: 7%;
+    width: 45%;
+    margin: 0;
+    font-size: clamp(9px, 1.45vw, 15px);
+    line-height: 1.85;
+    letter-spacing: 1.5px;
+    text-align: center;
+  }
+
+  .typing-text p {
+    white-space: nowrap;
+  }
+
+  .button-section {
+    width: 88%;
+    margin: 40px auto 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 22px;
+  }
+
+  .button-section img {
+    width: clamp(110px, 17vw, 145px);
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 18px;
+    text-align: center;
+  }
+
+  .footer-info {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .music-player {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+
+/* ===== 手機版 RWD：600px 以下 ===== */
+@media (max-width: 600px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .nav {
+    position: static;
+    width: 90%;
+    margin: 16px auto 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 6px 0;
+  }
+
+  .nav a {
+    font-size: 12px;
+  }
+
+  h1 img {
+    width: 135px;
+    margin: 18px auto 10px;
+  }
+
+  .container {
+    width: 92vw;
+    padding: 10px 0 0;
+    position: relative;
+  }
+
+  .subtitle-img {
+    width: 100%;
+    display: block;
+  }
+
+  .typing-text {
+    position: absolute;
+    top: 34%;
+    right: 5%;
+    width: 48%;
+    margin: 0;
+    font-size: clamp(7px, 2.15vw, 10px);
+    line-height: 1.65;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+
+  .typing-text p {
+    white-space: normal;
+  }
+
+  .button-section {
+    width: 90%;
+    margin: 36px auto 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 22px 18px;
+  }
+
+  .button-section img {
+    width: clamp(105px, 35vw, 135px);
+  }
+
+  .footer {
+    flex-direction: column;
+    padding: 24px 18px;
+    margin-top: 50px;
+    text-align: center;
+    gap: 18px;
+  }
+
+  .footer-info {
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+  }
+
+  .footer-info div {
+    width: 100%;
+  }
+
+  .music-player {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .music-player audio {
+    width: 90%;
+  }
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- 導覽列 -->
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="rsvp.html">RSVP</a>
+    <a href="event.html">Event Detail</a>
+  </nav>
+
+  <!-- 主內容 -->
+  <div class="container">
+    <h1><img src="images/NC_title.png" alt="Neil & Carol"></h1>
+    <img class="subtitle-img" src="images/title_1.png" alt="">
+    <div class="typing-text">
+    <p>謝謝陪伴我們走過人生不同階段的你們</p>
+    <p>因為有你們，這段旅程多了許多溫度與意義</p>
+
+    <p>從相遇開始</p>
+    <p>我們愛情長跑十年</p>
+    <p>那些笑與淚，讓彼此成為更重要的存在。</p>
+
+    <p>於是，在這個時刻，</p>
+    <p>我們做了一個重要的決定——</p>
+    <p>我們要結婚了！</p>
+  </div>
+  </div>
+<div class="button-section">
+  <a href="about.html">
+    <img src="images/bott_1.png" alt="About">
+  </a>
+
+  <a href="gallery.html">
+    <img src="images/bott_2.png" alt="Gallery">
+  </a>
+
+  <a href="rsvp.html">
+    <img src="images/bott_3.png" alt="RSVP">
+  </a>
+
+  <a href="event.html">
+    <img src="images/bott_4.png" alt="Event Detail">
+  </a>
+
+  <a href="game.html">
+    <img src="images/bott_5.png" alt="Mini Game">
+  </a>
+</div>
+<div class="footer">
+  
+  <div class="footer-info">
+    <div>
+      <strong>日期：</strong>2026.10.03（星期六）<br>
+      <strong>時間：</strong>晚宴準時入席 18:00
+    </div>
+
+    <div>
+      <strong>地點：</strong>台北青青食尚花園會館–星空之森<br>
+      （臺北市士林區至善路二段266巷32號）
+    </div>
+
+    <div class="copyright">
+      © 2026 by Neil & Carol
+    </div>
+  </div>
+
+  <div class="music-player">
+    <audio controls>
+      <source src="music/song.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+</div>
+</body>
+</html>

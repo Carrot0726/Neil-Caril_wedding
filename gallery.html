@@ -1,0 +1,890 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery | Wedding Website</title>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", sans-serif;
+      background-color: #efefef;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    /* ===== 導覽列 ===== */
+    .nav {
+      position: fixed;
+      top: 30px;
+      right: 40px;
+      display: flex;
+      gap: 24px;
+      padding: 8px 0;
+      border-top: 1px solid #333;
+      border-bottom: 1px solid #333;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .nav a:hover {
+      opacity: 0.6;
+    }
+     body {
+    margin: 0;
+    background-color: #efefef;
+  }
+  h1 img {
+    width: auto;
+    height: 80px;
+    display: block;
+    margin-left: 20px;
+    margin-top: -20px;
+  }
+.nav {
+  position: fixed;
+  top: 30px;
+  right: 40px;
+  z-index: 9999; /* 讓選單永遠在最上層 */
+}
+.gallery-bg {
+  width: 100%;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  z-index: 1;
+
+  opacity: 0;
+  transform: translate(-150%, -50%);
+  animation: slideInLeft 1.5s ease-out forwards;
+}
+
+.gallery-main-photo {
+  width: 65%;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: 100%;
+  z-index: 2;
+
+  opacity: 0;
+  transform: translateX(150%);
+  animation: slideInRight 1.5s ease-out 0.4s forwards;
+  animation-fill-mode: both;
+}
+.lightbox img {
+  max-width: 90vw !important;
+  max-height: 90vh !important;
+}
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translate(-150%, -50%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(150%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* head2 從右邊進來 */
+@keyframes slideInRight {
+  from {
+    transform: translateX(150%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.gallery-title {
+  position: absolute;   /* ⭐ 脫離排版 */
+  top: 20px;            /* 距離上面 */
+  left: 40px;           /* 距離左邊 */
+  width: 130px;         /* 控制大小 */
+  z-index: 10;          /* 確保在最上面 */
+}
+
+.gallery-hero {
+  position: relative;
+  width: 85%;
+  margin: 90px auto 0;
+}
+
+.gallery-bg {
+  width: 100%;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.gallery-main-photo {
+  width: 65%;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: 100%;
+  z-index: 2;
+}
+.gallery-preview-text {
+  margin-top: 20px;              /* ⭐ 原本40 → 拉開距離 */
+  text-align: center;
+  font-family: "Noto Serif TC", serif;
+  color: #333;
+  letter-spacing: 1.2px;         /* ⭐ 稍微收一點比較精緻 */
+
+  position: relative;            /* ⭐ 關鍵：避免被蓋 */
+  z-index: 5;                    /* ⭐ 確保在圖片上面 */
+}
+
+.gallery-preview-text p:first-child {
+  font-size: 26px;               /* ⭐ 稍微放大更有主標感 */
+  font-style: italic;
+  margin: 0 0 14px;
+}
+
+.gallery-preview-text p:last-child {
+  font-size: 16px;
+  margin: 0;
+  color: #777;                   /* ⭐ 更柔一點 */
+}
+.category-section {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 60px auto;
+}
+
+.card {
+  width: 160px;
+  background: #f8f8f8;
+  border-radius: 12px;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 0;   /* ⭐ 完全方形 */
+}
+
+.card p {
+  margin-top: 12px;
+  font-family: serif;
+  letter-spacing: 2px;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+.gallery-group img {
+  width: 80%;
+  max-width: 1000px;
+  display: block;
+  margin: 80px auto;
+
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  width: 82%;
+  margin: 50px auto 120px;
+}
+
+.photo-grid img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+}
+.lightboxOverlay {
+  z-index: 9998 !important;
+}
+
+.lightbox {
+  z-index: 9999 !important;
+}
+
+.nav {
+  z-index: 1000;
+}
+.lightbox .lb-image {
+  max-width: 90vw !important;
+  max-height: 85vh !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+.photo-grid a {
+  display: block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-grid a:hover {
+  transform: translateY(-10px);
+}
+@media (max-width: 768px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px 40px;
+  border-top: 1px solid #ccc;
+  margin-top: 80px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* ⭐ 讓三塊平均分 */
+.footer-info {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex: 3;   /* 左邊佔 3 份 */
+}
+
+.footer-info div {
+  flex: 1;   /* 日期 / 地點 平均 */
+  line-height: 1.6;
+}
+
+/* ⭐ 中間 */
+.copyright {
+  flex: 1;
+  text-align: center;
+  font-style: italic;
+  color: #888;
+}
+
+/* ⭐ 右邊 */
+.music-player {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.music-player audio {
+  height: 30px;
+}
+/* =========================================
+   Gallery RWD
+========================================= */
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  overflow-x:hidden;
+}
+
+/* ===== 超大螢幕 ===== */
+@media (min-width: 1600px){
+
+  .gallery-hero{
+    width: 70%;
+  }
+
+  .gallery-main-photo{
+    width: 58%;
+  }
+
+  .gallery-preview-text{
+    margin-top: 40px;
+  }
+
+  .photo-grid{
+    width: 72%;
+    gap: 28px;
+  }
+
+  .photo-grid img{
+    height: 340px;
+  }
+}
+
+/* ===== 筆電 / 平板 ===== */
+@media (max-width: 1024px){
+
+  .nav{
+    position: static;
+    width: 88%;
+    margin: 16px auto 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .gallery-title{
+    position: static;
+    display: block;
+    margin: 30px auto 10px;
+    width: 110px;
+  }
+
+  .gallery-hero{
+    width: 92%;
+    margin-top: 40px;
+  }
+
+  .gallery-main-photo{
+    width: 78%;
+  }
+
+  .gallery-preview-text{
+    margin-top: 50px;
+    padding: 0 20px;
+  }
+
+  .gallery-preview-text p:first-child{
+    font-size: 22px;
+  }
+
+  .category-section{
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 92%;
+  }
+
+  .card{
+    width: 145px;
+  }
+
+  .photo-grid{
+    width: 90%;
+    grid-template-columns: repeat(2,1fr);
+    gap: 18px;
+  }
+
+  .photo-grid img{
+    height: 240px;
+  }
+
+  .footer{
+    flex-direction: column;
+    gap: 18px;
+    text-align: center;
+  }
+
+  .footer-info{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .music-player{
+    justify-content:center;
+    width:100%;
+  }
+}
+
+/* ===== 手機版 ===== */
+@media (max-width: 600px){
+
+  body{
+    overflow-x:hidden;
+  }
+
+  .nav{
+    position: static;
+    width: 92%;
+    margin: 14px auto 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 6px 0;
+  }
+
+  .nav a{
+    font-size: 12px;
+  }
+
+  .gallery-title{
+    position: static;
+    display: block;
+    margin: 24px auto 0;
+    width: 90px;
+  }
+
+  .gallery-hero{
+    width: 96%;
+    margin-top: 24px;
+  }
+
+  .gallery-bg{
+    top: 52%;
+  }
+
+  .gallery-main-photo{
+    width: 88%;
+  }
+
+  .gallery-preview-text{
+    margin-top: 26px;
+    padding: 0 18px;
+  }
+
+  .gallery-preview-text p:first-child{
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .gallery-preview-text p:last-child{
+    font-size: 13px;
+  }
+
+  .category-section{
+    width: 95%;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 40px auto;
+  }
+
+  .card{
+    width: 42%;
+    padding: 8px;
+  }
+
+  .card p{
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .photo-grid{
+    width: 94%;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 70px;
+  }
+
+  .photo-grid img{
+    height: auto;
+  }
+
+  .gallery-group img{
+    width: 92%;
+    margin: 50px auto;
+  }
+
+  .footer{
+    flex-direction: column;
+    padding: 24px 20px;
+    text-align: center;
+    gap: 18px;
+  }
+
+  .footer-info{
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+  }
+
+  .footer-info div{
+    width:100%;
+  }
+
+  .music-player{
+    justify-content:center;
+    width:100%;
+  }
+
+  .music-player audio{
+    width:90%;
+  }
+}
+  </style>
+    <link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet">
+</head>
+<link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet">
+
+<body>
+
+  <!-- 導覽列 -->
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="rsvp.html">RSVP</a>
+    <a href="event.html">Event Detail</a>
+  </nav>
+<!-- 主內容 -->
+ <img class="gallery-title" src="images/Gallery.png" alt="Gallery">
+  <div class="gallery-hero">
+  <img class="gallery-bg" src="images/G_head1.png" alt="">
+  <img class="gallery-main-photo" src="images/G_head2.png" alt="">
+</div>
+<div class="gallery-preview-text">
+  <p>A Sneak Peek of Our Pre-Wedding Photos</p>
+  <p>See more on our wedding day</p>
+</div>
+<div class="category-section">
+
+  <a href="#seaside" class="card">
+    <img src="images/okinawa.jpg">
+    <p>Seaside</p>
+  </a>
+
+  <a href="#bridal" class="card">
+    <img src="images/bridal.jpg">
+    <p>Bridal Elegance</p>
+  </a>
+
+  <a href="#forest" class="card">
+    <img src="images/forest.jpg">
+    <p>Enchanted Forest</p>
+  </a>
+
+  <a href="#classic" class="card">
+    <img src="images/railway.jpg">
+    <p>Timeless Classic</p>
+  </a>
+
+  <a href="#oriental" class="card">
+    <img src="images/chinese.jpg">
+    <p>Oriental Romance</p>
+  </a>
+
+</div>
+
+<!-- 🌊 Seaside -->
+<div id="seaside" class="gallery-group">
+  <img class="gallery-title-img" src="images/title_sea.png" alt="Seaside">
+
+  <div class="photo-grid">
+
+  <a href="images/full/sea01.jpg" data-lightbox="gallery">
+    <img src="images/thumbs/sea01.jpg">
+  </a>
+
+  <a href="images/full/sea02.jpg" data-lightbox="gallery">
+    <img src="images/thumbs/sea02.jpg">
+  </a>
+
+  <a href="images/full/sea03.jpg" data-lightbox="gallery">
+    <img src="images/thumbs/sea03.jpg">
+  </a>
+  <a href="images/full/sea04.jpg" data-lightbox="gallery">
+    <img src="images/thumbs/sea04.jpg">
+  </a>
+  <a href="images/full/sea05.jpg" data-lightbox="gallery">
+    <img src="images/thumbs/sea05.jpg">
+  </a>
+  <a href="images/full/sea06.jpg" data-lightbox="gallery">
+    <img src="images/thumbs/sea06.jpg">
+  </a>
+  <a href="images/full/sea07.jpg" data-lightbox="gallery">
+    <img src="images/thumbs/sea07.jpg">
+  </a>
+  <a href="images/full/sea08.jpg" data-lightbox="gallery">
+    <img src="images/thumbs/sea08.jpg">
+  </a>
+  <a href="images/full/sea09.jpg" data-lightbox="gallery">
+    <img src="images/thumbs/sea09.jpg">
+  </a>
+  <a href="images/full/sea10.jpg" data-lightbox="gallery">
+    <img src="images/thumbs/sea10.jpg">
+  </a>
+  <a href="images/full/sea11.jpg" data-lightbox="gallery">
+    <img src="images/thumbs/sea11.jpg">
+  </a>
+  <a href="images/full/sea12.jpg" data-lightbox="gallery">
+    <img src="images/thumbs/sea12.jpg">
+  </a>
+  <a href="images/full/sea13.jpg" data-lightbox="gallery">
+    <img src="images/thumbs/sea13.jpg">
+  </a>
+  <a href="images/full/sea14.jpg" data-lightbox="gallery">
+    <img src="images/thumbs/sea14.jpg">
+  </a>
+  <a href="images/full/sea15.jpg" data-lightbox="gallery">
+    <img src="images/thumbs/sea15.jpg">
+  </a>
+  <a href="images/full/sea16.jpg" data-lightbox="gallery">
+    <img src="images/thumbs/sea16.jpg">
+  </a>
+  <a href="images/full/sea17.jpg" data-lightbox="gallery">
+    <img src="images/thumbs/sea17.jpg">
+  </a>
+  <a href="images/full/sea18.jpg" data-lightbox="gallery">
+    <img src="images/thumbs/sea18.jpg">
+  </a>
+  </div>
+</div>
+<!-- 🤍 Bridal Elegance -->
+<div id="bridal" class="gallery-group">
+  <img class="gallery-title-img" src="images/title_bri.png" alt="Bridal Elegance">
+
+  <div class="photo-grid">
+
+    <a href="images/full/bri01.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/bri01.jpg" alt="Bridal 01" loading="lazy">
+    </a>
+
+    <a href="images/full/bri02.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/bri02.jpg" alt="Bridal 02" loading="lazy">
+    </a>
+
+    <a href="images/full/bri03.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/bri03.jpg" alt="Bridal 03" loading="lazy">
+    </a>
+
+    <a href="images/full/bri04.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/bri04.jpg" alt="Bridal 04" loading="lazy">
+    </a>
+
+    <a href="images/full/bri05.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/bri05.jpg" alt="Bridal 05" loading="lazy">
+    </a>
+
+    <a href="images/full/bri06.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/bri06.jpg" alt="Bridal 06" loading="lazy">
+    </a>
+
+    <a href="images/full/bri07.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/bri07.jpg" alt="Bridal 07" loading="lazy">
+    </a>
+
+    <a href="images/full/bri08.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/bri08.jpg" alt="Bridal 08" loading="lazy">
+    </a>
+
+    <a href="images/full/bri09.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/bri09.jpg" alt="Bridal 09" loading="lazy">
+    </a>
+
+    <a href="images/full/bri10.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/bri10.jpg" alt="Bridal 10" loading="lazy">
+    </a>
+
+    <a href="images/full/bri11.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/bri11.jpg" alt="Bridal 11" loading="lazy">
+    </a>
+    <a href="images/full/bri12.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/bri12.jpg" alt="Bridal 11" loading="lazy">
+    </a>
+
+  </div>
+</div>
+
+<!-- 🌲 Enchanted Forest -->
+<div id="forest" class="gallery-group">
+  <img class="gallery-title-img" src="images/title_forst.png" alt="Enchanted Forest">
+
+  <div class="photo-grid">
+
+    <a href="images/full/forst01.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/forst01.jpg" alt="Forest 01" loading="lazy">
+    </a>
+
+    <a href="images/full/forst02.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/forst02.jpg" alt="Forest 02" loading="lazy">
+    </a>
+
+    <a href="images/full/forst03.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/forst03.jpg" alt="Forest 03" loading="lazy">
+    </a>
+
+    <a href="images/full/forst04.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/forst04.jpg" alt="Forest 04" loading="lazy">
+    </a>
+
+    <a href="images/full/forst05.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/forst05.jpg" alt="Forest 05" loading="lazy">
+    </a>
+
+    <a href="images/full/forst06.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/forst06.jpg" alt="Forest 06" loading="lazy">
+    </a>
+
+    <a href="images/full/forst07.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/forst07.jpg" alt="Forest 07" loading="lazy">
+    </a>
+
+    <a href="images/full/forst08.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/forst08.jpg" alt="Forest 08" loading="lazy">
+    </a>
+    <a href="images/full/forst09.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/forst09.jpg" alt="Forest 08" loading="lazy">
+    </a>
+
+  </div>
+</div>
+
+<!-- 🚂 Timeless Classic -->
+<div id="classic" class="gallery-group">
+  <img class="gallery-title-img" src="images/title_class.png" alt="Timeless Classic">
+
+  <div class="photo-grid">
+
+    <a href="images/full/orein01.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/orein01.jpg" alt="Oriental 01" loading="lazy">
+    </a>
+
+    <a href="images/full/orein02.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/orein02.jpg" alt="Oriental 02" loading="lazy">
+    </a>
+
+    <a href="images/full/orein03.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/orein03.jpg" alt="Oriental 03" loading="lazy">
+    </a>
+
+    <a href="images/full/orein04.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/orein04.jpg" alt="Oriental 04" loading="lazy">
+    </a>
+
+    <a href="images/full/orein05.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/orein05.jpg" alt="Oriental 05" loading="lazy">
+    </a>
+
+    <a href="images/full/orein06.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/orein06.jpg" alt="Oriental 06" loading="lazy">
+    </a>
+
+    <a href="images/full/orein07.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/orein07.jpg" alt="Oriental 07" loading="lazy">
+    </a>
+
+    <a href="images/full/orein08.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/orein08.jpg" alt="Oriental 08" loading="lazy">
+    </a>
+
+    <a href="images/full/orein09.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/orein09.jpg" alt="Oriental 09" loading="lazy">
+    </a>
+
+    <a href="images/full/orein10.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/orein10.jpg" alt="Oriental 10" loading="lazy">
+    </a>
+
+    <a href="images/full/orein11.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/orein11.jpg" alt="Oriental 11" loading="lazy">
+    </a>
+
+    <a href="images/full/orein12.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/orein12.jpg" alt="Oriental 12" loading="lazy">
+    </a>
+
+  </div>
+</div>
+
+<!-- 🏮 Oriental Romance -->
+<div id="oriental" class="gallery-group">
+  <img class="gallery-title-img" src="images/title_orein.png" alt="Oriental Romance">
+
+  <div class="photo-grid">
+
+    <a href="images/full/class01.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/class01.jpg" alt="Classic 01" loading="lazy">
+    </a>
+
+    <a href="images/full/class02.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/class02.jpg" alt="Classic 02" loading="lazy">
+    </a>
+
+    <a href="images/full/class03.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/class03.jpg" alt="Classic 03" loading="lazy">
+    </a>
+
+    <a href="images/full/class04.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/class04.jpg" alt="Classic 04" loading="lazy">
+    </a>
+
+    <a href="images/full/class05.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/class05.jpg" alt="Classic 05" loading="lazy">
+    </a>
+
+    <a href="images/full/class06.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/class06.jpg" alt="Classic 06" loading="lazy">
+    </a>
+
+    <a href="images/full/class07.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/class07.jpg" alt="Classic 07" loading="lazy">
+    </a>
+    <a href="images/full/class08.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/class08.jpg" alt="Classic 07" loading="lazy">
+    </a>
+    <a href="images/full/class09.jpg" data-lightbox="gallery">
+      <img src="images/thumbs/class09.jpg" alt="Classic 07" loading="lazy">
+    </a>
+
+  </div>
+  <div class="footer">
+  
+  <div class="footer-info">
+    <div>
+      <strong>日期：</strong>2026.10.03（星期六）<br>
+      <strong>時間：</strong>晚宴準時入席 18:00
+    </div>
+
+    <div>
+      <strong>地點：</strong>台北青青食尚花園會館–星空之森<br>
+      （臺北市士林區至善路二段266巷32號）
+    </div>
+
+    <div class="copyright">
+      © 2026 by Neil & Carol
+    </div>
+  </div>
+
+  <div class="music-player">
+    <audio controls>
+      <source src="music/song.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox.min.js"></script>
+
+<script>
+  lightbox.option({
+    wrapAround: true,
+    albumLabel: "Photo %1 of %2"
+  });
+</script>
+<script>
+lightbox.option({
+  wrapAround: true,
+  disableScrolling: true,
+  albumLabel: "Photo %1 of %2",
+  alwaysShowNavOnTouchDevices: true
+});
+</script>
+
+</body>
